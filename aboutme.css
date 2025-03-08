@@ -1,0 +1,30 @@
+.about-section {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.about-section h1 {
+    font-size: 30px;
+}
+
+.about-section p {
+    font-size: 18px;
+    color: gray;
+}
+.nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    background: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
