@@ -56,6 +56,7 @@
     width: 100%;
 }
 
+
 /* Hero Inner Content */
 .hero-inner {
     display: flex;
@@ -63,6 +64,8 @@
     justify-content: center;
     gap: 50px; /* Space between text and image */
     max-width: 1000px;
+    border:6px solid #000000 ;
+    padding: 50px;
 }
 
 /* Profile Image - Larger & Moved Right */
@@ -100,11 +103,13 @@
     .hero {
         flex-direction: column;
         text-align: center;
+     
     }
 
     .hero-inner {
         flex-direction: column; /* Image comes first, text below */
         gap: 20px;
+     
     }
 
     .hero-img img {
@@ -122,12 +127,13 @@
 
     /* Navbar Responsive Fix */
     .navbar {
-        flex-direction: column;
+        
         text-align: center;
     }
 
     .navbar ul {
-        flex-direction: column;
+        
         padding-top: 10px;
     }
+    
 }
