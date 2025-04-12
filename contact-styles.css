@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: black;
+    background: #27374D;
     padding: 15px 30px;
     width: 100%;
 }
@@ -20,6 +20,7 @@
     list-style: none;
     display: flex;
     gap: 20px;
+    color: #fdfdfd;
 }
 
 .navbar ul li {
@@ -28,20 +29,20 @@
 
 .navbar ul li a {
     text-decoration: none;
-    color: white;
+    color: #526D82;
     font-size: 18px;
     transition: color 0.3s ease-in-out;
 }
 
 .navbar ul li a:hover {
-    color: #00d1b2;
+    color: #526D82;
 }
 
 /* Logo */
 .navbar .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #00d1b2;
+    color: #ffffff;
 }
 
 /* Contact Section */
@@ -55,7 +56,7 @@
 .contact h1 {
     font-size: 32px;
     font-weight: bold;
-    color: #333;
+    color: #9DB2BF;
 }
 
 .contact p {
@@ -101,7 +102,7 @@
     font-size: 16px;
     font-weight: bold;
     color: white;
-    background: #00d1b2;
+    background: #526D82;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -109,7 +110,7 @@
 }
 
 .contact-box button:hover {
-    background: #009e8d;
+    background: #27374D;
 }
 
 /* Mobile Responsive */
