@@ -1,54 +1,143 @@
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #27374D;
+  padding: 15px 30px;
+  width: 100%;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: #43618a;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Experience Section */
+.experience-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 50px 20px;
+}
+
+/* Experience Box */
+.experience-box {
+  max-width: 1000px;
+  width: 100%;
+  border: 2px solid #27374D;
+  border-radius: 10px;
+  padding: 40px 30px;
+  background: #27374D;
+  color: white;
+  box-shadow: 0 4px 8px #b9d1e0;
+}
+
+/* Heading */
+.experience-box h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #9DB2BF;
+  margin-bottom: 40px;
+}
+
+/* Skills Layout */
+.skills-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+/* Each Skill */
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  text-align: center;
+}
+
+.skill img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transition: transform 0.3s;
+  border-radius: 10px;
+}
+
+.skill img:hover {
+  transform: scale(1.1);
+}
+
+.skill p {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #DDE6ED;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .experience-section {
+    padding: 30px 10px;
   }
-  
-  .navbar {
-    background-color: #233142;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 2rem;
+
+  .skills-container {
+    gap: 30px;
   }
-  
-  .logo {
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  
-  .nav-links a {
-    color: white;
-    margin-left: 1.5rem;
-    text-decoration: none;
-  }
-  
-  .nav-links .active {
-    font-weight: bold;
-    color: #00BFFF;
-  }
-  
-  .experience {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 3rem 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .tool {
-    text-align: center;
-    margin: 20px;
-  }
-  
-  .tool img {
+
+  .skill {
     width: 120px;
-    height: auto;
   }
-  
-  .tool p {
-    margin-top: 10px;
-    font-size: 1rem;
+
+  .skill img {
+    width: 80px;
+    height: 80px;
   }
-  
+
+  .experience-box h1 {
+    font-size: 24px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navbar ul {
+    padding-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
