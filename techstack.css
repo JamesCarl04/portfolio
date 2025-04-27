@@ -9,7 +9,7 @@
 /* Navbar */
 .navbar {
   display: flex;
-  align-items: center;
+  align-items: center; /* Ensures vertical centering of navbar items */
   justify-content: space-between;
   background: #27374D;
   padding: 15px 30px;
@@ -20,6 +20,7 @@
   list-style: none;
   display: flex;
   gap: 20px;
+  align-items: center; /* Ensures vertical centering for the list items */
 }
 
 .navbar ul li a {
@@ -27,6 +28,7 @@
   color: #ffffff;
   font-size: 18px;
   transition: color 0.3s ease-in-out;
+  line-height: 1; /* Ensures consistent vertical alignment */
 }
 
 .navbar ul li a:hover,
@@ -149,5 +151,6 @@
     padding-top: 10px;
     flex-direction: column;
     gap: 10px;
+    align-items: center; /* Ensures vertical alignment of items in mobile layout */
   }
 }
