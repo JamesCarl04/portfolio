@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("nav-links");
+const navLinks = document.querySelectorAll('.navbar ul li a');
 
-    hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
-    });
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.forEach(nav => nav.classList.remove('active'));
+    link.classList.add('active');
+  });
 });
