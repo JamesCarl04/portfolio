@@ -46,21 +46,17 @@ canvas {
     font-size: 1.1rem;
     font-weight: 500;
     color: #ffffff !important;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition for hover effects */
 }
 
 /* Hover effect for navbar links */
 .nav-link:hover {
-    color: #00bcd4 !important; /* Highlight color on hover */
+    color: #00bcd4; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly enlarge the link on hover */
 }
 
-/* Active link styling */
-.nav-link.active {
-    color: #00bcd4 !important; /* Highlight active link */
-    font-weight: bold;
-    border-bottom: 2px solid #00bcd4; /* Add underline for active link */
-}
-
+ .nav-bar:hover{
+    color: #DDE6ED !important; /* Change color on hover */ }
 /* Navbar spacing */
 .nav-item {
     margin: 0 10px; /* Add spacing between navbar items */
