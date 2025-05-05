@@ -22,6 +22,8 @@ canvas {
     z-index: 0;
 }
 
+
+
 .navbar {
     display: flex;
     justify-content: space-between;
