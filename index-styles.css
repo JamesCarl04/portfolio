@@ -137,7 +137,7 @@ canvas {
 
     .navbar {
         flex-direction: column;
-        align-items: center; /* center align logo and menu */
+        align-items: center; 
         padding: 20px;
     }
 
@@ -148,7 +148,7 @@ canvas {
 
     .navbar ul {
         flex-direction: column;
-        align-items: center; /* center align nav items */
+        align-items: center;
         width: 100%;
         gap: 15px;
     }
@@ -163,4 +163,37 @@ canvas {
         width: 100%;
         display: block;
     }
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.hamburger div {
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+}
+
 }
