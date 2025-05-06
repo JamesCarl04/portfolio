@@ -24,8 +24,8 @@ canvas {
 }
 
 .navbar {
-    background: linear-gradient(90deg, #1e3c72, #2a5298); /* Gradient background */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background: linear-gradient(90deg, #1e3c72, #2a5298); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     left: 0;
@@ -33,7 +33,6 @@ canvas {
     z-index: 1000;
 }
 
-/* Navbar brand styling */
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
@@ -41,31 +40,30 @@ canvas {
     text-transform: uppercase;
 }
 
-/* Navbar links styling */
 .nav-link {
     font-size: 1.1rem;
     font-weight: 500;
     color: #ffffff !important;
-    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition for hover effects */
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* Hover effect for navbar links */
 .nav-link:hover {
-    color: #00bcd4; /* Change text color on hover */
-    transform: scale(1.05); /* Slightly enlarge the link on hover */
+    color: #00bcd4;
+    transform: scale(1.05); 
 }
 
  .nav-bar:hover{
-    color: #DDE6ED !important; /* Change color on hover */ }
-/* Navbar spacing */
+    color: #DDE6ED !important;
+ }
+
 .nav-item {
-    margin: 0 10px; /* Add spacing between navbar items */
+    margin: 0 10px; 
 }
 
-/* Responsive navbar toggler */
+
 .navbar-toggler {
     border: none;
-    background-color: rgba(255, 255, 255, 0.2); /* Subtle background for toggler */
+    background-color: rgba(255, 255, 255, 0.2); 
 }
 
 .navbar-toggler-icon {
@@ -84,12 +82,12 @@ canvas {
     margin-top: 100px;
     max-width: 1000px;
     width: 100%;
-    border: 2px solid #27374D;
+    border: 2px solid #1e3c72;
     border-radius: 10px;
     padding: 40px 30px;
-    background: #27374D;
-    color: white;
-    box-shadow: 0 4px 8px #b9d1e0;
+    background: #1e3c72;
+    color: #1e3c72;
+    box-shadow: 0 4px 8px #1e3c72;
     text-align: center;
 }
 
