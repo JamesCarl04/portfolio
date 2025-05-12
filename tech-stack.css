@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +8,10 @@
 
 body {
   width: 100%;
-  height: 100vh;
-  overflow-x: hidden;
   background-color: #000;
   background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent),
                     radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.13), transparent);
+  overflow-x: hidden;
 }
 
 canvas {
@@ -22,7 +22,6 @@ canvas {
   left: 0;
   z-index: 0;
 }
-
 
 .navbar {
   background: linear-gradient(90deg, #1e3c72, #2a5298); 
@@ -41,7 +40,6 @@ canvas {
   text-transform: uppercase;
 }
 
-
 .nav-link {
   font-size: 1.1rem;
   font-weight: 500;
@@ -49,17 +47,14 @@ canvas {
   transition: color 0.3s ease-in-out, transform 0.2s ease-in-out; 
 }
 
-
 .nav-link:hover {
   color: #00bcd4;
   transform: scale(1.05);
 }
- 
 
 .nav-item {
   margin: 0 10px; 
 }
-
 
 .navbar-toggler {
   border: none;
@@ -74,20 +69,19 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 20px;
+  padding: 100px 20px 50px;
   position: relative;
   z-index: 1;
 }
 
 .experience-box {
-  margin-top: 100px;
   max-width: 1000px;
   width: 100%;
   border: 2px solid #1e3c72;
   border-radius: 10px;
   padding: 40px 30px;
   background: #1e3c72;
-  color: #1e3c72;
+  color: #ffffff;
   box-shadow: 0 4px 8px #1e3c72;
 }
 
@@ -95,7 +89,6 @@ canvas {
   text-align: center;
   font-size: 32px;
   font-weight: bold;
-  color: #ffffff;
   margin-bottom: 40px;
 }
 
@@ -119,6 +112,16 @@ canvas {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   padding: 20px;
+
+  /* Animation styles */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.skill.slide-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .skill:hover {
@@ -144,23 +147,29 @@ canvas {
   margin-top: 15px; 
 }
 
-
 @media (max-width: 768px) {
   .experience-section {
-    padding: 30px 10px;
+    padding: 80px 10px 30px;
   }
 
   .skills-container {
-    gap: 30px;
+    gap: 20px;
   }
 
   .skill {
     width: 120px;
+    height: auto;
+    padding: 15px;
   }
 
   .skill img {
     width: 80px;
     height: 80px;
+  }
+
+  .skill p {
+    font-size: 14px;
+    text-align: center;
   }
 
   .experience-box h1 {
@@ -179,22 +188,5 @@ canvas {
     gap: 10px;
     align-items: center;
     padding-top: 10px;
-  }
-
-  .skill {
-    flex-direction: column;
-    width: 140px;
-    height: auto;
-    padding: 15px;
-  }
-  
-  .skill img {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .skill p {
-    text-align: center;
-    font-size: 14px;
   }
 }
