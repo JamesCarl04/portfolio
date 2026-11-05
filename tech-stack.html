@@ -7,18 +7,56 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="tech-stack.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      width: 100%; min-height: 100vh; overflow-x: hidden;
+      background-color: #050508 !important;
+      background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.18), transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.15), transparent 50%) !important;
+      color: #ffffff !important;
+    }
+    canvas { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; pointer-events: none; }
+    .navbar {
+      background: rgba(10, 12, 22, 0.82) !important;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+      padding: 15px 0; z-index: 1000;
+    }
+    .navbar-brand { font-size: 1.5rem; font-weight: 700; color: #ffffff !important; letter-spacing: 1.5px; }
+    .nav-link { font-size: 1rem; font-weight: 500; color: rgba(255, 255, 255, 0.7) !important; transition: all 0.3s ease; }
+    .nav-link:hover, .nav-link.active { color: #ffffff !important; }
+    .nav-item { margin: 0 10px; }
+    .main-wrapper { position: relative; z-index: 5; max-width: 1100px; margin: 0 auto; padding: 110px 20px 60px; }
+    .glass-card {
+      background: rgba(12, 14, 24, 0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.65); border-radius: 16px;
+      padding: 50px 40px; text-align: center; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }
+    .page-title { font-size: 2.5rem; font-weight: 700; color: #ffffff; margin-bottom: 10px; }
+    .page-subtitle { font-size: 1.05rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 40px; }
+    .category-title {
+      font-size: 1.4rem; font-weight: 600; color: #c4b5fd; text-align: left;
+      margin: 35px 0 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .skills-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 20px; justify-items: center; }
+    .skill {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      width: 100%; height: 140px; background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; padding: 20px; transition: all 0.3s ease;
+    }
+    .skill:hover { transform: translateY(-6px); background: rgba(255, 255, 255, 0.09); border-color: #a78bfa; box-shadow: 0 8px 25px rgba(167, 139, 250, 0.25); }
+    .skill img { width: 55px !important; height: 55px !important; object-fit: contain; margin-bottom: 12px; }
+    .invert-icon { filter: invert(1) opacity(0.88); }
+    .skill p { color: rgba(255, 255, 255, 0.9); font-weight: 500; font-size: 0.9rem; margin: 0; text-align: center; }
+  </style>
 </head>
 <body>
-  <canvas></canvas>
-  
-  <!-- Navigation Bar -->
+  <canvas id="bg-canvas"></canvas>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">JCA</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-              data-bs-target="#navbarNav" aria-controls="navbarNav" 
-              aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -32,73 +70,100 @@
     </div>
   </nav>
 
-  <!-- Main Content Wrapper -->
   <main class="main-wrapper">
     <div class="glass-card">
       <h1 class="page-title">Technology Stack</h1>
       <p class="page-subtitle">The tools, languages, and frameworks I use to build modern applications.</p>
 
-      <!-- Web & Frontend -->
       <h2 class="category-title">Web & Frontend</h2>
       <div class="skills-container">
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" /><p>HTML5</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" /><p>CSS3</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" /><p>JavaScript</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" /><p>TypeScript</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /><p>Tailwind CSS</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="55" height="55" alt="HTML5" /><p>HTML5</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="55" height="55" alt="CSS3" /><p>CSS3</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="55" height="55" alt="JavaScript" /><p>JavaScript</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" width="55" height="55" alt="TypeScript" /><p>TypeScript</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width="55" height="55" alt="Tailwind CSS" /><p>Tailwind CSS</p></div>
       </div>
 
-      <!-- Backend & Database -->
       <h2 class="category-title">Backend, DB & IoT</h2>
       <div class="skills-container">
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" /><p>Node.js</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" class="invert-icon" alt="Express" /><p>Express</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg" alt="Firebase" /><p>Firebase</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" /><p>MongoDB</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" /><p>MySQL</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" /><p>C++ (ESP32)</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" width="55" height="55" alt="Node.js" /><p>Node.js</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" width="55" height="55" class="invert-icon" alt="Express" /><p>Express</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg" width="55" height="55" alt="Firebase" /><p>Firebase</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" width="55" height="55" alt="MongoDB" /><p>MongoDB</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" width="55" height="55" alt="MySQL" /><p>MySQL</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" width="55" height="55" alt="C++" /><p>C++ (ESP32)</p></div>
       </div>
 
-      <!-- Mobile Development -->
       <h2 class="category-title">Mobile Development</h2>
       <div class="skills-container">
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" /><p>Java</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" alt="Kotlin" /><p>Kotlin</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" alt="Dart" /><p>Dart</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" alt="Flutter" /><p>Flutter</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg" alt="Android Studio" /><p>Android Studio</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" width="55" height="55" alt="Java" /><p>Java</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" width="55" height="55" alt="Kotlin" /><p>Kotlin</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" width="55" height="55" alt="Dart" /><p>Dart</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" width="55" height="55" alt="Flutter" /><p>Flutter</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg" width="55" height="55" alt="Android Studio" /><p>Android Studio</p></div>
       </div>
 
-      <!-- Tools & Platforms -->
       <h2 class="category-title">Tools & Platforms</h2>
       <div class="skills-container">
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" /><p>Git</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" class="invert-icon" alt="GitHub" /><p>GitHub</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code" /><p>VS Code</p></div>
-        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" alt="Postman" /><p>Postman</p></div>
-        <div class="skill"><img src="photos/render-logo.png" alt="Render" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg'" /><p>Render</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" width="55" height="55" alt="Git" /><p>Git</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" width="55" height="55" class="invert-icon" alt="GitHub" /><p>GitHub</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" width="55" height="55" alt="VS Code" /><p>VS Code</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" width="55" height="55" alt="Postman" /><p>Postman</p></div>
       </div>
     </div>
   </main>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const skills = document.querySelectorAll(".skill");
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("slide-in");
-            obs.unobserve(entry.target);
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [];
+    let mouse = { x: null, y: null };
+    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+    function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width; this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.7; this.vy = (Math.random() - 0.5) * 0.7;
+        this.r = Math.random() * 1.8 + 0.8;
+      }
+      update() {
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.75)'; ctx.fill();
+      }
+    }
+    function init() {
+      resize(); particles = [];
+      const count = window.innerWidth < 768 ? 45 : 85;
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update(); particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+          if (dist < 155) {
+            ctx.beginPath(); ctx.strokeStyle = `rgba(255,255,255,${(1 - dist / 155) * 0.45})`;
+            ctx.lineWidth = 0.8; ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
           }
-        });
-      }, { threshold: 0.1 });
-
-      skills.forEach(skill => {
-        observer.observe(skill);
-      });
-    });
+        }
+        if (mouse.x !== null) {
+          const dist = Math.hypot(particles[i].x - mouse.x, particles[i].y - mouse.y);
+          if (dist < 180) {
+            ctx.beginPath(); ctx.strokeStyle = `rgba(167,139,250,${(1 - dist / 180) * 0.65})`;
+            ctx.lineWidth = 1; ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    window.addEventListener('resize', init); init(); animate();
   </script>
-
-  <script src="script.js"></script>
 </body>
 </html>

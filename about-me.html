@@ -7,18 +7,107 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="about-me-styles.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      width: 100%; min-height: 100vh; overflow-x: hidden;
+      background-color: #050508 !important;
+      background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.18), transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.15), transparent 50%) !important;
+      color: #ffffff !important;
+    }
+    canvas { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; pointer-events: none; }
+    .navbar {
+      background: rgba(10, 12, 22, 0.82) !important;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+      padding: 15px 0; z-index: 1000;
+    }
+    .navbar-brand { font-size: 1.5rem; font-weight: 700; color: #ffffff !important; letter-spacing: 1.5px; }
+    .nav-link { font-size: 1rem; font-weight: 500; color: rgba(255, 255, 255, 0.7) !important; transition: all 0.3s ease; }
+    .nav-link:hover, .nav-link.active { color: #ffffff !important; }
+    .nav-item { margin: 0 10px; }
+    .main-wrapper {
+      position: relative; z-index: 5; max-width: 920px; margin: 0 auto;
+      padding: 110px 20px 60px; display: flex; flex-direction: column; align-items: center;
+    }
+    .sub-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-bottom: 30px; }
+    .sub-nav-btn {
+      background: rgba(15, 18, 30, 0.65); color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.45); border-radius: 10px;
+      padding: 10px 24px; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      backdrop-filter: blur(8px); transition: all 0.25s ease;
+    }
+    .sub-nav-btn:hover { border-color: #ffffff; background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
+    .sub-nav-btn.active {
+      background: rgba(255, 255, 255, 0.18); border-color: #a78bfa;
+      box-shadow: 0 0 15px rgba(167, 139, 250, 0.35);
+    }
+    .tab-section { display: none; width: 100%; animation: fadeIn 0.35s ease forwards; }
+    .tab-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .glass-card {
+      background: rgba(12, 14, 24, 0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.7); border-radius: 12px;
+      padding: 45px 40px; text-align: center; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }
+    .glass-card h1 { font-size: 2.3rem; font-weight: 700; color: #ffffff; margin-bottom: 24px; }
+    .glass-card p { font-size: 1.05rem; color: rgba(255, 255, 255, 0.9); line-height: 1.75; margin-bottom: 18px; }
+    .timeline { display: flex; flex-direction: column; gap: 20px; text-align: left; margin-top: 25px; }
+    .timeline-item {
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.14);
+      border-left: 4px solid #a78bfa; border-radius: 10px; padding: 20px 25px;
+    }
+    .timeline-year {
+      display: inline-block; font-size: 0.82rem; font-weight: 600; color: #c4b5fd;
+      background: rgba(167, 139, 250, 0.15); padding: 4px 12px; border-radius: 20px; margin-bottom: 10px;
+    }
+    .timeline-item h3 { font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+    .timeline-item .school { font-size: 1rem; font-weight: 500; color: #38bdf8; margin-bottom: 4px; }
+    .timeline-item .desc { font-size: 0.92rem; color: rgba(255, 255, 255, 0.72); margin-bottom: 0; }
+    .project-wrapper { text-align: center; }
+    .section-heading { font-size: 2.4rem; font-weight: 700; margin-bottom: 20px; color: #ffffff; }
+    .project-card {
+      background: rgba(24, 20, 44, 0.92); backdrop-filter: blur(14px);
+      border: 1px solid rgba(167, 139, 250, 0.25); border-radius: 14px;
+      padding: 42px 40px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
+    }
+    .project-badge { font-size: 0.85rem; font-weight: 700; letter-spacing: 1.6px; color: #c4b5fd; text-transform: uppercase; margin-bottom: 10px; }
+    .project-title { font-size: 1.75rem; font-weight: 700; color: #ffffff; line-height: 1.35; margin-bottom: 20px; }
+    .project-description { font-size: 1.02rem; color: rgba(255, 255, 255, 0.9); line-height: 1.65; max-width: 780px; margin: 0 auto 28px; }
+    .features-heading { font-size: 1.35rem; font-weight: 700; color: #ffffff; margin-bottom: 16px; }
+    .features-list { text-align: left; max-width: 740px; margin: 0 auto 28px; padding-left: 22px; }
+    .features-list li { font-size: 0.98rem; color: rgba(255, 255, 255, 0.9); line-height: 1.65; margin-bottom: 10px; }
+    .project-tech { font-size: 0.98rem; color: rgba(255, 255, 255, 0.92); line-height: 1.6; margin-bottom: 0; }
+    .cert-subtitle { font-size: 0.95rem !important; color: rgba(255, 255, 255, 0.7) !important; margin-bottom: 28px !important; }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; text-align: left; }
+    .cert-card {
+      display: flex; flex-direction: column; text-decoration: none;
+      background: rgba(24, 20, 44, 0.85); border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px; padding: 28px 24px; color: #ffffff !important; transition: all 0.3s ease;
+    }
+    .cert-card:hover { transform: translateY(-6px); border-color: #a78bfa; box-shadow: 0 10px 28px rgba(167, 139, 250, 0.25); }
+    .cert-badge-icon { font-size: 2rem; margin-bottom: 12px; }
+    .cert-issuer { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #c4b5fd; margin-bottom: 8px; }
+    .cert-card h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 8px; color: #ffffff; }
+    .cert-date { font-size: 0.92rem !important; color: rgba(255, 255, 255, 0.8) !important; margin-bottom: 4px !important; }
+    .cert-code { font-size: 0.85rem !important; color: rgba(255, 255, 255, 0.65) !important; margin-bottom: 20px !important; }
+    .cert-code span { color: #38bdf8; font-family: monospace; font-size: 0.9rem; }
+    .cert-btn {
+      margin-top: auto; display: inline-block; text-align: center;
+      background: rgba(167, 139, 250, 0.18); border: 1px solid rgba(167, 139, 250, 0.5);
+      color: #ffffff; padding: 10px 16px; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+    }
+    .cert-card:hover .cert-btn { background: #7c3aed; border-color: #7c3aed; }
+  </style>
 </head>
 <body>
-  <canvas></canvas>
+  <canvas id="bg-canvas"></canvas>
 
-  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">JCA</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarNav" aria-controls="navbarNav"
-              aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -32,10 +121,7 @@
     </div>
   </nav>
 
-  <!-- Main Content Wrapper -->
   <main class="main-wrapper">
-    
-    <!-- Top Pill Buttons (Just like your classmate's layout) -->
     <div class="sub-nav">
       <button class="sub-nav-btn active" onclick="switchTab('about', this)">About Me</button>
       <button class="sub-nav-btn" onclick="switchTab('academic', this)">Academic Background</button>
@@ -43,7 +129,6 @@
       <button class="sub-nav-btn" onclick="switchTab('certificates', this)">Certificates</button>
     </div>
 
-    <!-- 1. ABOUT ME TAB -->
     <section id="tab-about" class="glass-card tab-section active">
       <h1>About Me</h1>
       <p>
@@ -54,66 +139,54 @@
       </p>
     </section>
 
-    <!-- 2. ACADEMIC BACKGROUND TAB -->
     <section id="tab-academic" class="glass-card tab-section">
       <h1>Academic Background</h1>
       <div class="timeline">
-        
         <div class="timeline-item">
           <span class="timeline-year">2023 – 2027 (Present)</span>
           <h3>Bachelor of Science in Information Technology (BSIT)</h3>
           <p class="school">St. Dominic College of Asia</p>
           <p class="desc">4th Year College Student (Section 4A) — Expected Graduation: 2027</p>
         </div>
-
         <div class="timeline-item">
           <span class="timeline-year">2020 – 2022</span>
           <h3>Senior High School — STEM Strand</h3>
           <p class="school">Parañaque National High School</p>
           <p class="desc">Science, Technology, Engineering, and Mathematics</p>
         </div>
-
         <div class="timeline-item">
           <span class="timeline-year">2016 – 2019</span>
           <h3>Junior High School</h3>
           <p class="school">Sto. Niño National High School</p>
           <p class="desc">Parañaque City</p>
         </div>
-
       </div>
     </section>
 
-    <!-- 3. PROJECTS TAB (Styled like your classmate's Capstone card) -->
     <section id="tab-projects" class="tab-section project-wrapper">
       <h1 class="section-heading">Projects</h1>
       <div class="project-card">
         <p class="project-badge">CAPSTONE PROJECT</p>
         <h2 class="project-title">KLIR: An IoT-Based Toilet Sanitation, Analytics, and Predictive Maintenance Management System</h2>
-        
         <p class="project-description">
           KLIR is an integrated IoT sanitation and custodial management system that connects automated restroom hardware with real-time cloud telemetry, a web operations dashboard, and a cross-platform mobile custodial application across a 22-restroom campus directory.
         </p>
-
         <h3 class="features-heading">Current features</h3>
         <ul class="features-list">
           <li>Touchless 7-state ESP32 automation for ultrasonic occupancy detection, motorized lid control, automatic flushing, and occupancy-interlocked UV-C disinfection.</li>
           <li>Real-time water flow telemetry, usage analytics, continuous-flow leak detection, and public QR code stall issue reporting.</li>
           <li>Role-based web dashboard and mobile app with automated cleaning dispatch, 10-point custodial checklists, before-and-after photo proof, biometric login, and supervisor QA audits.</li>
         </ul>
-
         <p class="project-tech">
           <strong>Technology:</strong> TypeScript, Next.js, React Native (Expo), Kotlin, C++ / Arduino (ESP32), Tailwind CSS, Firebase (Auth, Firestore, Storage, FCM), HiveMQ Cloud (MQTT over TLS), XML, Gradle, Vercel, and Railway.
         </p>
       </div>
     </section>
 
-    <!-- 4. CERTIFICATES TAB (Clickable Cards -> Opens PDF in new tab) -->
     <section id="tab-certificates" class="glass-card tab-section">
       <h1>Certificates</h1>
       <p class="cert-subtitle">Click on any certificate below to view and download the full official PDF.</p>
-      
       <div class="cert-grid">
-        <!-- HTML & CSS Certificate -->
         <a href="photos/HTML%20and%20CSS.pdf" target="_blank" rel="noopener noreferrer" class="cert-card">
           <div class="cert-badge-icon">🏆</div>
           <span class="cert-issuer">Information Technology Specialist • Certiport / Pearson VUE</span>
@@ -122,8 +195,6 @@
           <p class="cert-code">Verify ID: <span>wNzVz-2Fvm</span></p>
           <div class="cert-btn">Open Certificate PDF ↗</div>
         </a>
-
-        <!-- Cybersecurity Certificate -->
         <a href="photos/Cybersecurity.pdf" target="_blank" rel="noopener noreferrer" class="cert-card">
           <div class="cert-badge-icon">🛡️</div>
           <span class="cert-issuer">Information Technology Specialist • Certiport / Pearson VUE</span>
@@ -134,27 +205,65 @@
         </a>
       </div>
     </section>
-
   </main>
 
   <script>
     function switchTab(tabName, clickedBtn) {
-      // Hide all sections
-      document.querySelectorAll('.tab-section').forEach(section => {
-        section.classList.remove('active');
-      });
-
-      // Remove active state from all buttons
-      document.querySelectorAll('.sub-nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      // Show selected section and highlight button
+      document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.sub-nav-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('tab-' + tabName).classList.add('active');
       clickedBtn.classList.add('active');
     }
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [];
+    let mouse = { x: null, y: null };
+    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+    function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width; this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.7; this.vy = (Math.random() - 0.5) * 0.7;
+        this.r = Math.random() * 1.8 + 0.8;
+      }
+      update() {
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.75)'; ctx.fill();
+      }
+    }
+    function init() {
+      resize(); particles = [];
+      const count = window.innerWidth < 768 ? 45 : 85;
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update(); particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+          if (dist < 155) {
+            ctx.beginPath(); ctx.strokeStyle = `rgba(255,255,255,${(1 - dist / 155) * 0.45})`;
+            ctx.lineWidth = 0.8; ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
+          }
+        }
+        if (mouse.x !== null) {
+          const dist = Math.hypot(particles[i].x - mouse.x, particles[i].y - mouse.y);
+          if (dist < 180) {
+            ctx.beginPath(); ctx.strokeStyle = `rgba(167,139,250,${(1 - dist / 180) * 0.65})`;
+            ctx.lineWidth = 1; ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    window.addEventListener('resize', init); init(); animate();
   </script>
-
-  <script src="script.js"></script>
 </body>
 </html>
