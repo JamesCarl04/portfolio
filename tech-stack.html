@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>James Alvarez - Technology Stack</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="tech-stack.css" />
 </head>
 <body>
   <canvas></canvas>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">JCA</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
@@ -21,53 +23,67 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about-me.html">About Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="tech-stack.html">Tech Stack</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about-me.html">About Me</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tech-stack.html">Tech Stack</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <section class="experience-section">
-    <div class="experience-box">
-      <h1>Technology Stack</h1>
-      <div class="skills-container">
-        <div class="skill"><img src="photos/css-logo.png" alt="CSS" /><p>CSS</p></div>
-        <div class="skill"><img src="photos/html-logo.png" alt="HTML" /><p><strong>HTML</strong></p></div>
-        <div class="skill"><img src="photos/js-logo.png" alt="JavaScript" /><p>JavaScript</p></div>
-        <div class="skill"><img src="photos/android-studio.png" alt="Android Studio" /><p>Android Studio</p></div>
-        <div class="skill"><img src="photos/java-logo.png" alt="Java" /><p>Java</p></div>
-        <div class="skill"><img src="photos/git-logo.png" alt="Git" /><p>Git</p></div>
-        <div class="skill"><img src="photos/vscode-logo.png" alt="VS Code" /><p>VS Code</p></div>
-        <div class="skill"><img src="photos/github-logo.png" alt="GitHub" /><p>GitHub</p></div>
-        <div class="skill"><img src="photos/node-logo.png" alt="GitHub" /><p>Node</p></div>
-        <div class="skill"><img src="photos/express-logo.png" alt="GitHub" /><p>Express</p></div>
-        <div class="skill"><img src="photos/mongodb-logo.png" alt="GitHub" /><p>MongoDB</p></div>
-        <div class="skill"><img src="photos/dart-logo.png" alt="GitHub" /><p>Dart</p></div>
-        <div class="skill"><img src="photos/flutter-logo.png" alt="GitHub" /><p>Flutter</p></div>
-        <div class="skill"><img src="photos/mysql-logo.png" alt="GitHub" /><p>MySQL</p></div>
-        <div class="skill"><img src="photos/firebase-logo.png" alt="GitHub" /><p>Firebase</p></div>
-        <div class="skill"><img src="photos/postman-logo.png" alt="GitHub" /><p>Postman</p></div>
-        <div class="skill"><img src="photos/render-logo.png" alt="GitHub" /><p>Render</p></div>
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="glass-card">
+      <h1 class="page-title">Technology Stack</h1>
+      <p class="page-subtitle">The tools, languages, and frameworks I use to build modern applications.</p>
 
+      <!-- Web & Frontend -->
+      <h2 class="category-title">Web & Frontend</h2>
+      <div class="skills-container">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" /><p>HTML5</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" /><p>CSS3</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" /><p>JavaScript</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" /><p>TypeScript</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" /><p>Tailwind CSS</p></div>
+      </div>
+
+      <!-- Backend & Database -->
+      <h2 class="category-title">Backend, DB & IoT</h2>
+      <div class="skills-container">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" /><p>Node.js</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" class="invert-icon" alt="Express" /><p>Express</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg" alt="Firebase" /><p>Firebase</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" /><p>MongoDB</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" /><p>MySQL</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" /><p>C++ (ESP32)</p></div>
+      </div>
+
+      <!-- Mobile Development -->
+      <h2 class="category-title">Mobile Development</h2>
+      <div class="skills-container">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" /><p>Java</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" alt="Kotlin" /><p>Kotlin</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" alt="Dart" /><p>Dart</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" alt="Flutter" /><p>Flutter</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg" alt="Android Studio" /><p>Android Studio</p></div>
+      </div>
+
+      <!-- Tools & Platforms -->
+      <h2 class="category-title">Tools & Platforms</h2>
+      <div class="skills-container">
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" /><p>Git</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" class="invert-icon" alt="GitHub" /><p>GitHub</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code" /><p>VS Code</p></div>
+        <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" alt="Postman" /><p>Postman</p></div>
+        <div class="skill"><img src="photos/render-logo.png" alt="Render" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg'" /><p>Render</p></div>
       </div>
     </div>
-  </section>
+  </main>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const skills = document.querySelectorAll(".skill");
-
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -75,9 +91,7 @@
             obs.unobserve(entry.target);
           }
         });
-      }, {
-        threshold: 0.2
-      });
+      }, { threshold: 0.1 });
 
       skills.forEach(skill => {
         observer.observe(skill);
@@ -88,4 +102,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-

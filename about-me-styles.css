@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -7,13 +6,13 @@
 }
 
 body {
-  padding-top: 0 !important;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #000;
-  background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent),
-                    radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.13), transparent);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #050508;
+  background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.18), transparent 50%),
+                    radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.15), transparent 50%);
+  color: #ffffff;
 }
 
 canvas {
@@ -26,124 +25,382 @@ canvas {
   pointer-events: none;
 }
 
+/* Sleek Dark Glass Navbar */
 .navbar {
-  background: linear-gradient(90deg, #1e3c72, #2a5298); 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  background: rgba(10, 12, 22, 0.75) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 15px 0;
   z-index: 1000;
 }
 
 .navbar-brand {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   color: #ffffff !important;
-  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .nav-link {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  color: #ffffff !important;
-  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.3s ease;
 }
 
-.nav-link:hover {
-  color: #00bcd4;
-  transform: scale(1.05);
+.nav-link:hover,
+.nav-link.active {
+  color: #ffffff !important;
 }
 
 .nav-item {
   margin: 0 10px;
 }
 
-.navbar-toggler {
-  border: none;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-.black-box {
-  background-color: #1e3c72;
-  color: #9DB2BF;
-  padding: 40px;
-  text-align: center;
-  max-width: 800px;
-  margin: 50px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+/* Main Content Container */
+.main-wrapper {
   position: relative;
   z-index: 5;
-}
-
-.about-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 110px 20px 60px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 50px;
-  flex-wrap: wrap;
 }
 
-.about-content h1 {
-  font-size: 32px;
-  font-weight: bold;
+/* Top Pill Sub-Navigation (Classmate Style) */
+.sub-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.sub-nav-btn {
+  background: rgba(15, 18, 30, 0.65);
   color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+}
+
+.sub-nav-btn:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.sub-nav-btn.active {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #a78bfa;
+  box-shadow: 0 0 15px rgba(167, 139, 250, 0.35);
+}
+
+/* Tab Visibility Animation */
+.tab-section {
+  display: none;
+  width: 100%;
+  animation: fadeIn 0.35s ease forwards;
+}
+
+.tab-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glass Card (About Me, Academic, Certificates) */
+.glass-card {
+  background: rgba(12, 14, 24, 0.68);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 45px 40px;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+}
+
+.glass-card h1 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.glass-card p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+/* Academic Background Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+  margin-top: 25px;
+}
+
+.timeline-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 4px solid #a78bfa;
+  border-radius: 10px;
+  padding: 20px 25px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(6px);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.timeline-year {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #c4b5fd;
+  background: rgba(167, 139, 250, 0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.timeline-item h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.timeline-item .school {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #38bdf8;
+  margin-bottom: 4px;
+}
+
+.timeline-item .desc {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 0;
+}
+
+/* Projects Card (Matches your Classmate's Dark Navy/Purple Card) */
+.project-wrapper {
+  text-align: center;
+}
+
+.section-heading {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.project-card {
+  background: rgba(24, 20, 44, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 14px;
+  padding: 42px 40px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
+}
+
+.project-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: #c4b5fd;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
   margin-bottom: 20px;
 }
 
-.about-content p {
-  font-size: 18px;
+.project-description {
+  font-size: 1.02rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.65;
+  max-width: 780px;
+  margin: 0 auto 28px;
+}
+
+.features-heading {
+  font-size: 1.35rem;
+  font-weight: 700;
   color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.features-list {
+  text-align: left;
+  max-width: 740px;
+  margin: 0 auto 28px;
+  padding-left: 22px;
+}
+
+.features-list li {
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.project-tech {
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.92);
   line-height: 1.6;
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 
+.project-tech strong {
+  color: #ffffff;
+}
+
+/* Certificates Grid (Clickable Cards) */
+.cert-subtitle {
+  font-size: 0.95rem !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  margin-bottom: 28px !important;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: rgba(24, 20, 44, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 28px 24px;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  border-color: #a78bfa;
+  box-shadow: 0 10px 28px rgba(167, 139, 250, 0.25);
+  color: #ffffff;
+}
+
+.cert-badge-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.cert-issuer {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #c4b5fd;
+  margin-bottom: 8px;
+}
+
+.cert-card h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.cert-date {
+  font-size: 0.92rem !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin-bottom: 4px !important;
+}
+
+.cert-code {
+  font-size: 0.85rem !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  margin-bottom: 20px !important;
+}
+
+.cert-code span {
+  color: #38bdf8;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.cert-btn {
+  margin-top: auto;
+  display: inline-block;
+  text-align: center;
+  background: rgba(167, 139, 250, 0.18);
+  border: 1px solid rgba(167, 139, 250, 0.5);
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.25s ease;
+}
+
+.cert-card:hover .cert-btn {
+  background: #7c3aed;
+  border-color: #7c3aed;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .about-inner {
-    flex-direction: column;
-    gap: 20px;
+  .main-wrapper {
+    padding: 95px 15px 40px;
   }
 
-  .about-content h1 {
-    font-size: 24px;
+  .glass-card,
+  .project-card {
+    padding: 28px 20px;
   }
 
-  .about-content p {
-    font-size: 14px;
+  .glass-card h1,
+  .section-heading {
+    font-size: 1.8rem;
   }
 
-  .navbar {
-    flex-direction: column;
-    align-items: center; 
-    padding: 20px;
+  .project-title {
+    font-size: 1.35rem;
   }
 
-  .navbar .logo {
-    margin-bottom: 20px;
-    text-align: center;
+  .sub-nav {
+    gap: 10px;
   }
 
-  .navbar ul {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 15px;
-  }
-
-  .navbar ul li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .navbar ul li a {
-    padding: 10px 0;
-    width: 100%;
-    display: block;
+  .sub-nav-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
   }
 }
-

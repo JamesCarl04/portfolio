@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>James Alvarez - About Me</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="about-me-styles.css" />
 </head>
 <body>
   <canvas></canvas>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">JCA</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,25 +32,129 @@
     </div>
   </nav>
 
-  <div style="height: 100px;"></div>
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    
+    <!-- Top Pill Buttons (Just like your classmate's layout) -->
+    <div class="sub-nav">
+      <button class="sub-nav-btn active" onclick="switchTab('about', this)">About Me</button>
+      <button class="sub-nav-btn" onclick="switchTab('academic', this)">Academic Background</button>
+      <button class="sub-nav-btn" onclick="switchTab('projects', this)">Projects</button>
+      <button class="sub-nav-btn" onclick="switchTab('certificates', this)">Certificates</button>
+    </div>
 
-  <section class="black-box">
-    <div class="about-inner">
-      <div class="about-content">
-        <h1>About Me</h1>
-        <p>
-          Hi, I'm James Carl Alvarez, an aspiring software developer who loves building cool, efficient, and user-friendly apps.
-          I work on both the front-end and back-end, always aiming to create smooth and enjoyable digital experiences.
+    <!-- 1. ABOUT ME TAB -->
+    <section id="tab-about" class="glass-card tab-section active">
+      <h1>About Me</h1>
+      <p>
+        Hi, I'm <strong>James Carl Alvarez</strong>, a 4th-year Information Technology student and aspiring software developer who loves building cool, efficient, and user-friendly applications. I work across both front-end and back-end technologies, as well as IoT hardware integration, always aiming to create smooth and impactful digital experiences.
+      </p>
+      <p>
+        I am committed to continuous learning and actively seeking opportunities to grow as a full-stack developer. I approach every project with enthusiasm and dedication to producing high-quality, innovative solutions—and one day, I hope to lead my own development team and help shape the future of tech.
+      </p>
+    </section>
+
+    <!-- 2. ACADEMIC BACKGROUND TAB -->
+    <section id="tab-academic" class="glass-card tab-section">
+      <h1>Academic Background</h1>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <span class="timeline-year">2023 – 2027 (Present)</span>
+          <h3>Bachelor of Science in Information Technology (BSIT)</h3>
+          <p class="school">St. Dominic College of Asia</p>
+          <p class="desc">4th Year College Student (Section 4A) — Expected Graduation: 2027</p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-year">2020 – 2022</span>
+          <h3>Senior High School — STEM Strand</h3>
+          <p class="school">Parañaque National High School</p>
+          <p class="desc">Science, Technology, Engineering, and Mathematics</p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-year">2016 – 2019</span>
+          <h3>Junior High School</h3>
+          <p class="school">Sto. Niño National High School</p>
+          <p class="desc">Parañaque City</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. PROJECTS TAB (Styled like your classmate's Capstone card) -->
+    <section id="tab-projects" class="tab-section project-wrapper">
+      <h1 class="section-heading">Projects</h1>
+      <div class="project-card">
+        <p class="project-badge">CAPSTONE PROJECT</p>
+        <h2 class="project-title">KLIR: An IoT-Based Toilet Sanitation, Analytics, and Predictive Maintenance Management System</h2>
+        
+        <p class="project-description">
+          KLIR is an integrated IoT sanitation and custodial management system that connects automated restroom hardware with real-time cloud telemetry, a web operations dashboard, and a cross-platform mobile custodial application across a 22-restroom campus directory.
         </p>
-        <p>
-          I'm looking to grow as a full-stack developer and be part of projects that really make an impact.
-          One day, I hope to lead my own development team and help shape the future of tech.
+
+        <h3 class="features-heading">Current features</h3>
+        <ul class="features-list">
+          <li>Touchless 7-state ESP32 automation for ultrasonic occupancy detection, motorized lid control, automatic flushing, and occupancy-interlocked UV-C disinfection.</li>
+          <li>Real-time water flow telemetry, usage analytics, continuous-flow leak detection, and public QR code stall issue reporting.</li>
+          <li>Role-based web dashboard and mobile app with automated cleaning dispatch, 10-point custodial checklists, before-and-after photo proof, biometric login, and supervisor QA audits.</li>
+        </ul>
+
+        <p class="project-tech">
+          <strong>Technology:</strong> TypeScript, Next.js, React Native (Expo), Kotlin, C++ / Arduino (ESP32), Tailwind CSS, Firebase (Auth, Firestore, Storage, FCM), HiveMQ Cloud (MQTT over TLS), XML, Gradle, Vercel, and Railway.
         </p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- 4. CERTIFICATES TAB (Clickable Cards -> Opens PDF in new tab) -->
+    <section id="tab-certificates" class="glass-card tab-section">
+      <h1>Certificates</h1>
+      <p class="cert-subtitle">Click on any certificate below to view and download the full official PDF.</p>
+      
+      <div class="cert-grid">
+        <!-- HTML & CSS Certificate -->
+        <a href="photos/HTML%20and%20CSS.pdf" target="_blank" rel="noopener noreferrer" class="cert-card">
+          <div class="cert-badge-icon">🏆</div>
+          <span class="cert-issuer">Information Technology Specialist • Certiport / Pearson VUE</span>
+          <h3>HTML and CSS</h3>
+          <p class="cert-date">Awarded: February 4, 2026</p>
+          <p class="cert-code">Verify ID: <span>wNzVz-2Fvm</span></p>
+          <div class="cert-btn">Open Certificate PDF ↗</div>
+        </a>
+
+        <!-- Cybersecurity Certificate -->
+        <a href="photos/Cybersecurity.pdf" target="_blank" rel="noopener noreferrer" class="cert-card">
+          <div class="cert-badge-icon">🛡️</div>
+          <span class="cert-issuer">Information Technology Specialist • Certiport / Pearson VUE</span>
+          <h3>Cybersecurity</h3>
+          <p class="cert-date">Awarded: June 3, 2026</p>
+          <p class="cert-code">Verify ID: <span>w6Wwd-48Go</span></p>
+          <div class="cert-btn">Open Certificate PDF ↗</div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function switchTab(tabName, clickedBtn) {
+      // Hide all sections
+      document.querySelectorAll('.tab-section').forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // Remove active state from all buttons
+      document.querySelectorAll('.sub-nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Show selected section and highlight button
+      document.getElementById('tab-' + tabName).classList.add('active');
+      clickedBtn.classList.add('active');
+    }
+  </script>
 
   <script src="script.js"></script>
 </body>
 </html>
-
